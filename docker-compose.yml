@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: cs024/weather-app:1.0
+    container_name: weather-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    image: cs024/weather-frontend:1.0
+    container_name: weather-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
